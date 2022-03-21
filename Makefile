@@ -1,9 +1,11 @@
 
 cc=gcc
 flags=-Wall -g
+target=./bin/program.out
+prereqs=./obj/main.o ./obj/VXAtom.o
 
-program: ./obj/main.o ./obj/VXAtom.o
-	$(cc) $(flags) $? -o ./bin/$@.out -lm
+$(target): $(prereqs)
+	$(cc) $(flags) $? -o $@ -lm
 
 ./obj/main.o: main.c
 	$(cc) $(flags) -c $? -o $@ -lm
